@@ -32,8 +32,8 @@ class DataLogger:
             existing_df = conn.read(ttl=0)
             updated_df = pd.concat([existing_df, pd.DataFrame([kwargs])], ignore_index=True)
             conn.update(data=updated_df)
-        except Exception as cloud_err:
-            pass
+       except Exception as cloud_err:
+    st.error(f"Google Sheets connection failed: {cloud_err}")
 
     def get_all_data(self):
         if os.path.exists(self.filename):
